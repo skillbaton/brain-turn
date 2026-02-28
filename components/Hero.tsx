@@ -13,7 +13,7 @@ const item = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] as [number, number, number, number] },
+    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
   },
 };
 
@@ -54,39 +54,52 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* H1 */}
+            {/* H1 — 3行固定改行 */}
             <motion.h1
               variants={item}
-              className="text-[2.5rem] md:text-5xl xl:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-gray-900"
+              className="tracking-tight text-gray-900 font-bold"
+              style={{ lineHeight: 1.1 }}
             >
-              外国人雇用を、<br />
-              <span
-                className="text-transparent bg-clip-text"
-                style={{
-                  backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)",
-                }}
-              >
-                &ldquo;現場任せ&rdquo;
+              {/* 行1 */}
+              <span className="block text-[2.35rem] md:text-[2.9rem] xl:text-[3.35rem]">
+                外国人雇用を
               </span>
-              から整える。
+              {/* 行2 — 「教育」をグラデーション＋extrabold で強調 */}
+              <span className="block text-[2.35rem] md:text-[2.9rem] xl:text-[3.35rem]">
+                &ldquo;<span
+                  className="text-transparent bg-clip-text font-extrabold"
+                  style={{ backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)" }}
+                >教育</span>&rdquo;という武器で
+              </span>
+              {/* 行3 — 「整える」を一回り大きく＋同グラデーション */}
+              <span className="block text-[2.75rem] md:text-[3.4rem] xl:text-[4rem] mt-1">
+                「<span
+                  className="text-transparent bg-clip-text"
+                  style={{ backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)" }}
+                >整える</span>」
+              </span>
             </motion.h1>
 
-            {/* Sub copy */}
+            {/* Sub copy — 4行、一切削らない */}
             <motion.div
               variants={item}
-              className="mt-6 space-y-1.5 text-[15px] md:text-base text-gray-500 leading-relaxed max-w-[440px]"
+              className="mt-8 space-y-2 max-w-[460px]"
             >
-              <p>受講状況・理解度・未対応者を一目で把握。</p>
-              <p>教育を感覚ではなく、データで整える。</p>
+              {/* 1行目: やや太字 */}
+              <p className="text-[15px] md:text-base font-semibold text-gray-700 leading-relaxed">
+                SKILL TUNEは、ただの教育システムではありません。
+              </p>
+              <p className="text-[15px] md:text-base text-gray-500 leading-relaxed">
+                受講状況・理解度・未対応者を可視化。
+              </p>
+              <p className="text-[15px] md:text-base text-gray-500 leading-relaxed">
+                属人化しない教育運用を実現する。
+              </p>
+              {/* 4行目: 定義文、やや小さめ */}
+              <p className="text-[13px] text-gray-400 leading-relaxed pt-1">
+                外国人雇用に特化した法人向けeラーニングシステムです。
+              </p>
             </motion.div>
-
-            {/* Definition */}
-            <motion.p
-              variants={item}
-              className="mt-5 text-[13px] text-gray-400 leading-relaxed max-w-[420px]"
-            >
-              SKILL TUNEは、外国人雇用に特化した法人向けeラーニングシステムです。
-            </motion.p>
 
             {/* CTAs */}
             <motion.div variants={item} className="mt-9 flex flex-col sm:flex-row gap-3">
