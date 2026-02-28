@@ -1,8 +1,8 @@
 const painPoints = [
-  { text: "同じミスが繰り返される",         icon: "🔁" },
-  { text: "「聞いていない」と言われる",      icon: "🔇" },
-  { text: "報告が遅れる",                  icon: "⏰" },
-  { text: "注意が増え、担当者が疲弊する",    icon: "😤" },
+  { text: "同じミスが繰り返される",        icon: "🔁" },
+  { text: "「聞いていない」と言われる",     icon: "🔇" },
+  { text: "報告が遅れる",                 icon: "⏰" },
+  { text: "注意が増え、担当者が疲弊する",   icon: "😤" },
 ];
 
 const causes = [
@@ -16,24 +16,24 @@ export default function Problem() {
     <section id="problem" className="section bg-surface">
       <div className="ct">
 
-        {/* ── Header ── */}
+        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="section-label">Problem</span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
             問題は、人ではなく<br />
             <span className="text-navy-900">「再現性」</span>にあります。
           </h2>
           <p className="mt-4 text-gray-500 text-base leading-relaxed">
-            外国人スタッフは真面目です。<br />
-            やる気がないわけでもありません。<br />
+            外国人スタッフは真面目です。やる気がないわけでもありません。<br />
             それでも、現場では同じ問題が繰り返されます。
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
+        {/* ── 高さを揃えるため items-stretch ── */}
+        <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
 
-          {/* Left: Pain points */}
-          <div className="space-y-3">
+          {/* Left: Pain points — flex col で高さ100% */}
+          <div className="flex flex-col gap-3">
             {painPoints.map((p) => (
               <div
                 key={p.text}
@@ -50,29 +50,35 @@ export default function Problem() {
             ))}
           </div>
 
-          {/* Right: Root cause */}
-          <div className="space-y-4">
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-card p-7">
-              <div className="text-sm font-semibold text-gray-900 mb-1">なぜでしょうか。</div>
+          {/* Right: Root cause — flex col h-full で高さを左に合わせる */}
+          <div className="flex flex-col gap-4 h-full">
+            {/* Causes card */}
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-card p-7 flex-1">
+              <div className="text-sm font-semibold text-gray-900 mb-2">なぜでしょうか。</div>
               <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                それは、教育が「管理されていない」からです。
+                それは、学習の状況が「整理されていない」からです。
               </p>
               <div className="grid grid-cols-3 gap-3">
                 {causes.map((c) => (
-                  <div key={c.label} className="text-center bg-gray-50 rounded-xl p-4 border border-gray-100">
+                  <div
+                    key={c.label}
+                    className="text-center bg-gray-50 rounded-xl p-4 border border-gray-100"
+                  >
                     <div className="font-semibold text-gray-600 text-[13px] mb-1">{c.label}</div>
                     <div className="text-[10px] text-gray-400 leading-snug">{c.sub}</div>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* Summary card */}
             <div className="bg-navy-900 text-white rounded-2xl p-6">
-              <div className="text-xs text-blue-200 mb-2 opacity-70">結果として</div>
+              <div className="text-xs text-blue-200 mb-2 opacity-70">根本の問題</div>
               <p className="text-base font-semibold leading-snug">
-                理解は、可視化されていません。
+                理解の状態が、見えていません。
               </p>
               <p className="text-sm text-blue-100 mt-2 opacity-70 leading-relaxed">
-                教育が「実施されたか」は分かる。<br />
+                研修が「実施されたか」は分かる。<br />
                 しかし「理解されたか」は分からない。
               </p>
             </div>

@@ -4,28 +4,24 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "導入にかかる期間はどのくらいですか？",
-    a: "初期ヒアリングから運用開始まで、最短3週間を目安にしています。スタッフ規模や業種により前後しますが、導入設計から運用開始まで担当者が伴走しますのでご安心ください。",
-  },
-  {
-    q: "対応している言語を教えてください。",
-    a: "日本語・英語・ベトナム語・中国語（簡体字）に対応しています。その他の言語については個別にご相談ください。外国人スタッフの母語でコンテンツを配信できるよう設計されています。",
-  },
-  {
     q: "価格・費用はどのくらいかかりますか？",
-    a: "導入規模や運用体制によって最適なプランが異なるため、資料にてご案内しています。まずはお気軽に資料をご請求ください。また、助成金を活用することで実質負担を抑えられる場合があります。",
+    a: "導入規模や運用体制によって最適なプランが異なります。価格の目安は資料にてご案内していますので、まずはお気軽にご請求ください。",
   },
   {
     q: "助成金は必ず活用できますか？",
-    a: "助成金の適用可否は企業の状況・条件によって異なります。「助成金活用可能」とご案内しているのは、要件を満たした場合に活用できる制度があるためです。詳細は資料または担当者にてご確認いただけます。",
+    a: "助成金の適用可否は企業の状況・条件によって異なります。要件を満たした場合に活用できる制度があるため「助成金活用可能」とご案内しています。詳細は資料または担当者にてご確認ください。",
   },
   {
-    q: "管理者アカウントは何名まで設定できますか？",
-    a: "プランに応じて管理者数を設定できます。拠点管理者・現場リーダー・HR担当など、役割ごとの権限設定も可能です。詳細は資料またはヒアリング時にご確認ください。",
+    q: "導入にかかる期間はどのくらいですか？",
+    a: "初期ヒアリングから運用開始まで、最短3週間を目安にしています。スタッフ規模や業種により前後しますが、導入設計から運用開始まで担当者が伴走します。",
   },
   {
-    q: "セキュリティ・個人情報の取り扱いについて教えてください。",
-    a: "データはすべて暗号化して管理しており、アクセス権限は管理者が細かく設定できます。個人情報の取り扱いは関連法令に準拠しており、定期的なセキュリティ監査を実施しています。詳細はプライバシーポリシーをご参照ください。",
+    q: "対応している言語を教えてください。",
+    a: "日本語・英語・ベトナム語・中国語（簡体字）に対応しています。その他の言語については個別にご相談ください。スタッフの母語でコンテンツを届けられる設計です。",
+  },
+  {
+    q: "管理者権限の設定はできますか？セキュリティは大丈夫ですか？",
+    a: "拠点管理者・現場リーダー・HR担当など役割ごとに権限を設定できます。データはすべて暗号化して管理しており、個人情報の取り扱いは関連法令に準拠しています。",
   },
 ];
 
@@ -43,7 +39,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           <span className="text-sm font-semibold text-gray-800 leading-snug">{q}</span>
         </div>
         <svg
-          width="18" height="18" viewBox="0 0 18 18" fill="none"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
           className={`flex-shrink-0 mt-0.5 text-gray-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         >
           <path d="M4 7l5 5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -61,22 +60,19 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="section bg-surface">
+    <section id="faq" className="section bg-white">
       <div className="ct">
-
         <div className="text-center max-w-xl mx-auto mb-12">
           <span className="section-label">FAQ</span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
             よくあるご質問
           </h2>
         </div>
-
         <div className="max-w-2xl mx-auto space-y-3">
           {faqs.map((faq) => (
             <FAQItem key={faq.q} q={faq.q} a={faq.a} />
           ))}
         </div>
-
       </div>
     </section>
   );

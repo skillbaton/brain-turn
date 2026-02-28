@@ -1,44 +1,37 @@
 "use client";
 
-import { useState } from "react";
-import Header    from "@/components/Header";
-import Hero      from "@/components/Hero";
-import LogoWall  from "@/components/LogoWall";
-import Problem   from "@/components/Problem";
-import Insight   from "@/components/Insight";
-import Solution  from "@/components/Solution";
-import Value     from "@/components/Value";
-import Model     from "@/components/Model";
-import Onboarding from "@/components/Onboarding";
-import Grant     from "@/components/Grant";
-import FAQ       from "@/components/FAQ";
-import FinalCTA  from "@/components/FinalCTA";
-import Footer    from "@/components/Footer";
-import LeadModal from "@/components/LeadModal";
+import Header      from "@/components/Header";
+import Hero        from "@/components/Hero";
+import KPIStats    from "@/components/KPIStats";
+import Problem     from "@/components/Problem";
+import Insight     from "@/components/Insight";
+import Solution    from "@/components/Solution";
+import Value       from "@/components/Value";
+import Model       from "@/components/Model";
+import Onboarding  from "@/components/Onboarding";
+import Grant       from "@/components/Grant";
+import FAQ         from "@/components/FAQ";
+import ContactForm from "@/components/ContactForm";
+import Footer      from "@/components/Footer";
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const open  = () => setModalOpen(true);
-  const close = () => setModalOpen(false);
-
   return (
     <>
-      <Header    onOpenModal={open} />
+      <Header />
       <main>
-        <Hero       onOpenModal={open} />
-        <LogoWall />
+        <Hero />
+        <KPIStats />
         <Problem />
         <Insight />
         <Solution />
         <Value />
         <Model />
         <Onboarding />
-        <Grant      onOpenModal={open} />
+        <Grant />
         <FAQ />
-        <FinalCTA   onOpenModal={open} />
+        <ContactForm />
       </main>
       <Footer />
-      <LeadModal isOpen={modalOpen} onClose={close} />
     </>
   );
 }
