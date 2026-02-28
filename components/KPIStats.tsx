@@ -1,6 +1,6 @@
-/* ─────────────────────────────────────────────────
-   KPIStats — Hero直下の4枚 Lightdash風ミニカード
-   ───────────────────────────────────────────────── */
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 
 const stats = [
   {
@@ -44,14 +44,24 @@ const stats = [
 ];
 
 export default function KPIStats() {
+  const shouldReduce = useReducedMotion();
+
   return (
     <section className="bg-white border-t border-gray-100">
       <div className="ct">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden">
-          {stats.map((s) => (
-            <div
+          {stats.map((s, i) => (
+            <motion.div
               key={s.label}
-              className="bg-white px-6 py-7 hover:bg-gray-50/60 transition-colors"
+              className="bg-white px-6 py-7 hover:bg-gray-50/60 hover:-translate-y-0.5 hover:shadow-card transition-all duration-200"
+              initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{
+                duration: 0.5,
+                delay: shouldReduce ? 0 : i * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+              }}
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-navy-900 mb-4"
@@ -63,7 +73,7 @@ export default function KPIStats() {
                 {s.label}
               </div>
               <div className="text-[13px] text-gray-400 leading-relaxed">{s.desc}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -30,14 +30,14 @@ export default function Problem() {
         </div>
 
         {/* ── 高さを揃えるため items-stretch ── */}
-        <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto min-h-[440px]">
 
           {/* Left: Pain points — flex col で高さ100% */}
           <div className="flex flex-col gap-3">
             {painPoints.map((p) => (
               <div
                 key={p.text}
-                className="flex items-center gap-4 bg-white rounded-xl px-5 py-4 border border-gray-100 shadow-card"
+                className="flex items-center gap-4 bg-white rounded-xl px-5 py-4 border border-gray-100 shadow-card flex-1"
               >
                 <span className="text-xl flex-shrink-0">{p.icon}</span>
                 <span className="font-medium text-gray-700 text-sm">{p.text}</span>

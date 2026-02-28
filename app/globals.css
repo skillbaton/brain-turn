@@ -21,7 +21,7 @@
 @layer components {
   /* Container — max-w-[1200px] */
   .ct {
-    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   /* Section base spacing */

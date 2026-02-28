@@ -1,62 +1,9 @@
-/* ─────────────────────────────────────────────────
-   DashboardMock — SVGベース管理画面モック
-   ───────────────────────────────────────────────── */
+"use client";
 
-function SparkBar({ heights }: { heights: number[] }) {
-  const max = Math.max(...heights);
-  return (
-    <svg viewBox={`0 0 ${heights.length * 14} 40`} className="w-full h-10">
-      {heights.map((h, i) => {
-        const barH = (h / max) * 36;
-        return (
-          <rect
-            key={i}
-            x={i * 14 + 1}
-            y={40 - barH}
-            width={10}
-            height={barH}
-            rx={2}
-            fill="#0F1B4C"
-            opacity={0.12 + (h / max) * 0.65}
-          />
-        );
-      })}
-    </svg>
-  );
-}
+import { motion, useReducedMotion } from "framer-motion";
 
-function Donut({
-  pct,
-  color = "#0F1B4C",
-  size = 48,
-}: {
-  pct: number;
-  color?: string;
-  size?: number;
-}) {
-  const r = 17;
-  const circ = 2 * Math.PI * r;
-  const dash = (pct / 100) * circ;
-  return (
-    <svg width={size} height={size} viewBox="0 0 44 44">
-      <circle cx="22" cy="22" r={r} fill="none" stroke="#e5e7eb" strokeWidth="5" />
-      <circle
-        cx="22"
-        cy="22"
-        r={r}
-        fill="none"
-        stroke={color}
-        strokeWidth="5"
-        strokeDasharray={`${dash} ${circ - dash}`}
-        strokeDashoffset={circ / 4}
-        strokeLinecap="round"
-      />
-      <text x="22" y="26" textAnchor="middle" fontSize="9" fontWeight="700" fill="#111827">
-        {pct}%
-      </text>
-    </svg>
-  );
-}
+const barData = [30, 42, 38, 55, 50, 68, 60, 80, 72, 90, 88, 95];
+const maxBar  = Math.max(...barData);
 
 const staffList = [
   { name: "Nguyen T.",  score: 92, label: "完了",      labelCls: "text-green-600 bg-green-50"  },
@@ -65,9 +12,19 @@ const staffList = [
   { name: "Lin W.",    score: 61, label: "再受講",     labelCls: "text-red-600   bg-red-50"    },
 ];
 
+const kpiData = [
+  { label: "受講完了率",       val: "87%",  delta: "+5%",  pct: 87, color: "#0F1B4C" },
+  { label: "平均理解度スコア", val: "72点", delta: "+8点", pct: 72, color: "#16a34a" },
+];
+
+const r = 17;
+
 export default function DashboardMock() {
+  const shouldReduce = useReducedMotion();
+
   return (
     <div className="w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white select-none">
+
       {/* Window chrome */}
       <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
         <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -83,17 +40,41 @@ export default function DashboardMock() {
       </div>
 
       <div className="p-4 bg-gray-50 space-y-3">
-        {/* KPI row */}
+
+        {/* ── KPI row (animated donuts) ── */}
         <div className="grid grid-cols-2 gap-2.5">
-          {[
-            { label: "受講完了率",       val: "87%",  delta: "+5%",  pct: 87, color: "#0F1B4C" },
-            { label: "平均理解度スコア", val: "72点", delta: "+8点", pct: 72, color: "#16a34a" },
-          ].map((s) => (
+          {kpiData.map((s, idx) => (
             <div
               key={s.label}
               className="bg-white rounded-xl p-3 border border-gray-100 shadow-sm flex items-center gap-2.5"
             >
-              <Donut pct={s.pct} color={s.color} size={44} />
+              {/* Animated donut — g handles -90° rotation so arc starts at top */}
+              <svg width="44" height="44" viewBox="0 0 44 44">
+                <circle cx="22" cy="22" r={r} fill="none" stroke="#e5e7eb" strokeWidth="5" />
+                <g transform="rotate(-90 22 22)">
+                  <motion.circle
+                    cx="22"
+                    cy="22"
+                    r={r}
+                    fill="none"
+                    stroke={s.color}
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    initial={{ pathLength: shouldReduce ? s.pct / 100 : 0 }}
+                    whileInView={{ pathLength: s.pct / 100 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 1.2,
+                      delay: shouldReduce ? 0 : 0.3 + idx * 0.15,
+                      ease: "easeOut",
+                    }}
+                  />
+                </g>
+                <text x="22" y="26" textAnchor="middle" fontSize="9" fontWeight="700" fill="#111827">
+                  {s.val}
+                </text>
+              </svg>
+
               <div>
                 <div className="text-[10px] text-gray-400 leading-none mb-1">{s.label}</div>
                 <div className="text-lg font-bold text-gray-900 leading-none">{s.val}</div>
@@ -103,15 +84,39 @@ export default function DashboardMock() {
           ))}
         </div>
 
-        {/* Chart + alert */}
+        {/* ── Chart + alert ── */}
         <div className="grid grid-cols-3 gap-2.5">
           <div className="col-span-2 bg-white rounded-xl p-3 border border-gray-100 shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <span className="text-[10px] font-semibold text-gray-500">今月の受講推移</span>
               <span className="text-[10px] text-gray-400">142件</span>
             </div>
-            <SparkBar heights={[30, 42, 38, 55, 50, 68, 60, 80, 72, 90, 88, 95]} />
+
+            {/* Animated div-based bar chart */}
+            <div className="flex items-end gap-[3px] h-10">
+              {barData.map((h, i) => (
+                <motion.div
+                  key={i}
+                  className="flex-1 rounded-sm"
+                  style={{
+                    height: `${(h / maxBar) * 100}%`,
+                    background: "#0F1B4C",
+                    opacity: 0.12 + (h / maxBar) * 0.65,
+                    transformOrigin: "bottom",
+                  }}
+                  initial={{ scaleY: shouldReduce ? 1 : 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.45,
+                    delay: shouldReduce ? 0 : 0.2 + i * 0.04,
+                    ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+                  }}
+                />
+              ))}
+            </div>
           </div>
+
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 shadow-sm flex flex-col justify-between">
             <div className="flex items-center gap-1 mb-1">
               <svg width="10" height="10" viewBox="0 0 12 12" fill="#d97706">
@@ -122,13 +127,12 @@ export default function DashboardMock() {
             </div>
             <div className="text-2xl font-bold text-amber-700 leading-none">3名</div>
             <div className="text-[9px] text-amber-600 mt-1 leading-tight">
-              80点未満
-              <br />→ 再受講対象
+              80点未満<br />→ 再受講対象
             </div>
           </div>
         </div>
 
-        {/* Staff list */}
+        {/* ── Staff list (animated progress bars) ── */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="px-3 py-2 border-b border-gray-100 flex items-center justify-between">
             <span className="text-[10px] font-semibold text-gray-500">スタッフ別進捗</span>
@@ -148,7 +152,8 @@ export default function DashboardMock() {
               ))}
             </div>
           </div>
-          {staffList.map((row) => (
+
+          {staffList.map((row, i) => (
             <div
               key={row.name}
               className="px-3 py-2 flex items-center justify-between border-b border-gray-50 last:border-0"
@@ -159,16 +164,19 @@ export default function DashboardMock() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-14 h-1.5 rounded-full bg-gray-100 overflow-hidden">
-                  <div
+                  <motion.div
                     className="h-full rounded-full"
                     style={{
-                      width: `${row.score}%`,
                       background:
-                        row.score >= 80
-                          ? "#16a34a"
-                          : row.score >= 70
-                          ? "#d97706"
-                          : "#dc2626",
+                        row.score >= 80 ? "#16a34a" : row.score >= 70 ? "#d97706" : "#dc2626",
+                    }}
+                    initial={{ width: shouldReduce ? `${row.score}%` : "0%" }}
+                    whileInView={{ width: `${row.score}%` }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.8,
+                      delay: shouldReduce ? 0 : 0.5 + i * 0.1,
+                      ease: "easeOut",
                     }}
                   />
                 </div>
@@ -182,6 +190,7 @@ export default function DashboardMock() {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );
