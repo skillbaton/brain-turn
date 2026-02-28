@@ -58,21 +58,21 @@ export default function Hero() {
             <motion.h1
               variants={item}
               className="tracking-tight text-gray-900 font-bold"
-              style={{ lineHeight: 1.1 }}
+              style={{ lineHeight: 1.08 }}
             >
               {/* 行1 */}
-              <span className="block text-[2.35rem] md:text-[2.9rem] xl:text-[3.35rem]">
+              <span className="block text-[1.95rem] md:text-[2.2rem] xl:text-[2.55rem]">
                 外国人雇用を
               </span>
               {/* 行2 — 「教育」をグラデーション＋extrabold で強調 */}
-              <span className="block text-[2.35rem] md:text-[2.9rem] xl:text-[3.35rem]">
+              <span className="block text-[1.95rem] md:text-[2.2rem] xl:text-[2.55rem]">
                 &ldquo;<span
                   className="text-transparent bg-clip-text font-extrabold"
                   style={{ backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)" }}
                 >教育</span>&rdquo;という武器で
               </span>
               {/* 行3 — 「整える」を一回り大きく＋同グラデーション */}
-              <span className="block text-[2.75rem] md:text-[3.4rem] xl:text-[4rem] mt-1">
+              <span className="block text-[2.3rem] md:text-[2.6rem] xl:text-[3rem] mt-1.5">
                 「<span
                   className="text-transparent bg-clip-text"
                   style={{ backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)" }}
