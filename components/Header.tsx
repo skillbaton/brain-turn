@@ -6,84 +6,80 @@ interface HeaderProps {
   onOpenModal: () => void;
 }
 
+const navLinks = [
+  { label: "課題",           href: "#problem"  },
+  { label: "ソリューション",  href: "#solution" },
+  { label: "導入の流れ",     href: "#onboarding" },
+  { label: "助成金",         href: "#grant"    },
+  { label: "FAQ",           href: "#faq"      },
+];
+
 export default function Header({ onOpenModal }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const fn = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
-
-  const navItems = [
-    { label: "課題", href: "#problem" },
-    { label: "ソリューション", href: "#solution" },
-    { label: "価値", href: "#value" },
-    { label: "助成金", href: "#grant" },
-  ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm"
+          ? "bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24">
-        <div className="flex items-center justify-between h-16 md:h-18">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 bg-navy-900 rounded-lg flex items-center justify-center">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 18 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect x="2" y="2" width="6" height="6" rx="1.5" fill="white" fillOpacity="0.9" />
-                <rect x="10" y="2" width="6" height="6" rx="1.5" fill="white" fillOpacity="0.5" />
-                <rect x="2" y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity="0.5" />
-                <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity="0.9" />
+      <div className="ct">
+        <div className="flex items-center justify-between h-16">
+
+          {/* ── Logo ── */}
+          <a href="#" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="2"  y="2"  width="6" height="6" rx="1.5" fill="white" fillOpacity=".9"/>
+                <rect x="10" y="2"  width="6" height="6" rx="1.5" fill="white" fillOpacity=".45"/>
+                <rect x="2"  y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity=".45"/>
+                <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity=".9"/>
               </svg>
             </div>
-            <span className="text-[15px] font-semibold text-gray-900 tracking-tight">
-              EduManage
+            <span className="text-[15px] font-bold tracking-tight text-gray-900">
+              SKILL TUNE
             </span>
           </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+          {/* ── Desktop Nav ── */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((l) => (
               <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium"
+                key={l.href}
+                href={l.href}
+                className="text-[13px] font-medium text-gray-500 hover:text-gray-900 transition-colors"
               >
-                {item.label}
+                {l.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop actions */}
+          {/* ── Desktop Actions ── */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#"
-              className="text-sm text-gray-500 hover:text-gray-800 transition-colors font-medium px-3 py-2"
+              className="text-[13px] font-medium text-gray-500 hover:text-gray-800 transition-colors px-3 py-2"
             >
               ログイン
             </a>
             <button
               onClick={onOpenModal}
-              className="bg-navy-900 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-navy-700 transition-colors"
+              className="btn-primary !py-2.5 !px-5 !text-[13px]"
             >
               資料を請求する
             </button>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* ── Hamburger ── */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2 text-gray-600 hover:text-gray-900"
@@ -91,46 +87,41 @@ export default function Header({ onOpenModal }: HeaderProps) {
           >
             {menuOpen ? (
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M5 5L17 17M17 5L5 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             ) : (
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M4 7H18M4 11H18M4 15H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <path d="M4 7h14M4 11h14M4 15h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             )}
           </button>
         </div>
-
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white py-4 space-y-1">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="block px-2 py-2.5 text-sm text-gray-600 hover:text-gray-900 font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="pt-3 border-t border-gray-100 mt-3 space-y-2">
-              <a
-                href="#"
-                className="block px-2 py-2 text-sm text-gray-500 font-medium"
-              >
-                ログイン
-              </a>
-              <button
-                onClick={() => { setMenuOpen(false); onOpenModal(); }}
-                className="w-full bg-navy-900 text-white text-sm font-medium px-5 py-3 rounded-lg"
-              >
-                資料を請求する
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* ── Mobile Menu ── */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 px-5 py-4 space-y-1">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className="block py-2.5 text-sm text-gray-600 hover:text-gray-900 font-medium"
+            >
+              {l.label}
+            </a>
+          ))}
+          <div className="pt-4 border-t border-gray-100 space-y-2">
+            <a href="#" className="block py-2 text-sm text-gray-500">ログイン</a>
+            <button
+              onClick={() => { setMenuOpen(false); onOpenModal(); }}
+              className="w-full btn-primary !justify-center"
+            >
+              資料を請求する
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
