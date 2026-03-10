@@ -62,19 +62,16 @@ export default function Hero() {
             >
               {/* 行1 */}
               <span className="block text-[1.95rem] md:text-[2.2rem] xl:text-[2.55rem]">
-                外国人雇用を
+                外国人が
               </span>
-              {/* 行2 — 「教育」をグラデーション＋extrabold で強調 */}
+              {/* 行2 */}
               <span className="block text-[1.95rem] md:text-[2.2rem] xl:text-[2.55rem]">
-                &ldquo;<span
-                  className="text-transparent bg-clip-text font-extrabold"
-                  style={{ backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)" }}
-                >教育</span>&rdquo;という武器で
+                働きやすい環境を
               </span>
-              {/* 行3 — 「整える」を一回り大きく＋同グラデーション */}
+              {/* 行3 — 「整える」を一回り大きく＋グラデーション */}
               <span className="block text-[2.3rem] md:text-[2.6rem] xl:text-[3rem] mt-1.5">
                 「<span
-                  className="text-transparent bg-clip-text"
+                  className="text-transparent bg-clip-text font-extrabold"
                   style={{ backgroundImage: "linear-gradient(135deg, #0F1B4C 0%, #2a3f8f 100%)" }}
                 >整える</span>」
               </span>
@@ -87,13 +84,13 @@ export default function Hero() {
             >
               {/* 1行目: やや太字 */}
               <p className="text-[15px] md:text-base font-semibold text-gray-700 leading-relaxed">
-                SKILL TUNEは、ただの教育システムではありません。
+                SKILL TUNEは、外国人が定着できる職場環境を整えるシステムです。
               </p>
               <p className="text-[15px] md:text-base text-gray-500 leading-relaxed">
                 受講状況・理解度・未対応者を可視化。
               </p>
               <p className="text-[15px] md:text-base text-gray-500 leading-relaxed">
-                属人化しない教育運用を実現する。
+                属人化しない運用で、定着率を高める。
               </p>
               {/* 4行目: 定義文、やや小さめ */}
               <p className="text-[13px] text-gray-400 leading-relaxed pt-1">
