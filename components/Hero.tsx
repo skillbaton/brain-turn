@@ -77,6 +77,14 @@ export default function Hero() {
               </span>
             </motion.h1>
 
+            {/* Tagline — 教育ではなく整える */}
+            <motion.p
+              variants={item}
+              className="mt-4 text-[13px] md:text-[14px] text-gray-400 tracking-wide"
+            >
+              「教育」ではなく、「<span className="text-gray-600 font-medium">整える</span>」という発想。
+            </motion.p>
+
             {/* Sub copy — 4行、一切削らない */}
             <motion.div
               variants={item}
