@@ -126,14 +126,14 @@ export default function Hero() {
               className="mt-6 flex items-center gap-4 text-[13px] text-gray-400"
             >
               <a
-                href="#"
+                href="https://app-skilltune.com/wp-login.php"
                 className="hover:text-gray-600 transition-colors underline underline-offset-2 decoration-gray-200"
               >
                 受講者ログイン
               </a>
               <span className="text-gray-200">|</span>
               <a
-                href="#"
+                href="https://app-skilltune.com/wp-login.php"
                 className="hover:text-gray-600 transition-colors underline underline-offset-2 decoration-gray-200"
               >
                 企業管理者ログイン

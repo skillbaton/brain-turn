@@ -60,9 +60,9 @@ export default function Header() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
             <div className="flex items-center gap-0.5 text-[12px] text-gray-400">
-              <a href="#" className="hover:text-gray-700 transition-colors px-2 py-2">受講者ログイン</a>
+              <a href="https://app-skilltune.com/wp-login.php" className="hover:text-gray-700 transition-colors px-2 py-2">受講者ログイン</a>
               <span className="text-gray-200 select-none">|</span>
-              <a href="#" className="hover:text-gray-700 transition-colors px-2 py-2">管理者ログイン</a>
+              <a href="https://app-skilltune.com/wp-login.php" className="hover:text-gray-700 transition-colors px-2 py-2">管理者ログイン</a>
             </div>
             <a href="#contact" className="btn-primary !py-2.5 !px-5 !text-[13px]">
               資料を請求する
@@ -103,9 +103,9 @@ export default function Header() {
           ))}
           <div className="pt-4 border-t border-gray-100 space-y-2">
             <div className="flex items-center gap-3 py-1.5">
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">受講者ログイン</a>
+              <a href="https://app-skilltune.com/wp-login.php" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">受講者ログイン</a>
               <span className="text-gray-200 select-none">|</span>
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">管理者ログイン</a>
+              <a href="https://app-skilltune.com/wp-login.php" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">管理者ログイン</a>
             </div>
             <a
               href="#contact"
