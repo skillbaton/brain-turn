@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "課題",          href: "#problem"    },
@@ -32,16 +33,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-navy-900 flex items-center justify-center flex-shrink-0">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <rect x="2"  y="2"  width="6" height="6" rx="1.5" fill="white" fillOpacity=".9"/>
-                <rect x="10" y="2"  width="6" height="6" rx="1.5" fill="white" fillOpacity=".45"/>
-                <rect x="2"  y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity=".45"/>
-                <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity=".9"/>
-              </svg>
-            </div>
-            <span className="text-[15px] font-bold tracking-tight text-gray-900">SKILL TUNE</span>
+          <a href="#" className="flex items-center">
+            <Image
+              src="/SUKILL TUNE.svg"
+              alt="SKILL TUNE"
+              width={140}
+              height={40}
+              priority
+            />
           </a>
 
           {/* Desktop Nav */}
