@@ -126,7 +126,7 @@ export default function Hero() {
                   />
                 </svg>
               </a>
-              <a href="#solution" className="btn-secondary !px-8 !py-4 !text-[15px] !text-white !border-white/40 hover:!bg-white/10">
+              <a href="#solution" className="btn-secondary !px-8 !py-4 !text-[15px] !text-white !border-white/60 !bg-white/15 hover:!bg-white/25">
                 仕組みを見る
               </a>
             </motion.div>
