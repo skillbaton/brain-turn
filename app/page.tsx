@@ -1,4 +1,5 @@
 import Header        from "@/components/Header";
+import SplashScreen  from "@/components/SplashScreen";
 import Hero          from "@/components/Hero";
 import KPIStats      from "@/components/KPIStats";
 import Problem       from "@/components/Problem";
@@ -16,6 +17,7 @@ import FadeInSection from "@/components/FadeInSection";
 export default function Home() {
   return (
     <>
+      <SplashScreen />
       <Header />
       <main>
         {/* Hero has its own stagger — no wrapper needed */}
