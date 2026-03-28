@@ -35,7 +35,7 @@ export default function Header() {
           {/* Logo */}
           <a href="#" className="flex items-center">
             <Image
-              src="/SUKILL TUNE.svg"
+              src="/LOGO _SKILLTUNE.svg"
               alt="SKILL TUNE"
               width={140}
               height={40}
