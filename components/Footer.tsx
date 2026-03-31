@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -8,16 +10,13 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-7 h-7 bg-white/10 rounded-lg flex items-center justify-center">
-                <svg width="15" height="15" viewBox="0 0 18 18" fill="none">
-                  <rect x="2"  y="2"  width="6" height="6" rx="1.5" fill="white" fillOpacity=".8"/>
-                  <rect x="10" y="2"  width="6" height="6" rx="1.5" fill="white" fillOpacity=".4"/>
-                  <rect x="2"  y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity=".4"/>
-                  <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" fillOpacity=".8"/>
-                </svg>
-              </div>
-              <span className="text-[14px] font-bold text-white tracking-tight">SKILL TUNE</span>
+            <div className="mb-4">
+              <Image
+                src="/LOGO_SKILLTUNE.svg"
+                alt="SKILL TUNE"
+                width={120}
+                height={45}
+              />
             </div>
             <p className="text-xs text-gray-500 leading-relaxed">
               外国人雇用に特化した<br />法人向け教育管理SaaS
