@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Image
-                src="/SKILLTUNE_logo.svg"
+                src="/SKILL_TUNE_new.svg"
                 alt="SKILL TUNE"
                 width={120}
                 height={38}

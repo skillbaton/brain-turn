@@ -44,7 +44,7 @@ export default function SplashScreen() {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="/SKILLTUNE_logo.svg"
+            src="/SKILL_TUNE_new.svg"
             alt="SKILL TUNE"
             width={320}
             height={100}
