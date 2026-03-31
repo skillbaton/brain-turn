@@ -47,7 +47,7 @@ export default function SplashScreen() {
             src="/LOGO _SKILLTUNE.svg"
             alt="SKILL TUNE"
             width={320}
-            height={100}
+            height={120}
             priority
           />
         </motion.div>

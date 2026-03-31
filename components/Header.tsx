@@ -37,8 +37,8 @@ export default function Header() {
             <Image
               src="/LOGO _SKILLTUNE.svg"
               alt="SKILL TUNE"
-              width={140}
-              height={40}
+              width={161}
+              height={60}
               priority
             />
           </a>
