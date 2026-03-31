@@ -15,7 +15,7 @@ export default function Footer() {
                 src="/LOGO_SKILLTUNE.svg"
                 alt="SKILL TUNE"
                 width={120}
-                height={45}
+                height={50}
               />
             </div>
             <p className="text-xs text-gray-500 leading-relaxed">
