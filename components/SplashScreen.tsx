@@ -44,10 +44,10 @@ export default function SplashScreen() {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="/LOGO_SKILLTUNE.svg"
+            src="/SKILLTUNE_logo.svg"
             alt="SKILL TUNE"
             width={320}
-            height={132}
+            height={100}
             priority
           />
         </motion.div>
