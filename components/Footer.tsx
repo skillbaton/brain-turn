@@ -51,11 +51,19 @@ export default function Footer() {
           <div>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">ログイン</div>
             <ul className="space-y-3">
-              {["受講者ログイン", "企業管理者ログイン", "資料請求"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm hover:text-white transition-colors">{item}</a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="https://skill-tune.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-white transition-colors"
+                >
+                  システムログイン
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm hover:text-white transition-colors">資料請求</a>
+              </li>
             </ul>
           </div>
         </div>

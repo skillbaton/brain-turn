@@ -137,17 +137,12 @@ export default function Hero() {
               className="mt-6 flex items-center gap-4 text-[13px] text-white/50"
             >
               <a
-                href="https://app-skilltune.com/wp-login.php"
+                href="https://skill-tune.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white/80 transition-colors underline underline-offset-2 decoration-white/20"
               >
-                受講者ログイン
-              </a>
-              <span className="text-white/20">|</span>
-              <a
-                href="https://app-skilltune.com/wp-login.php"
-                className="hover:text-white/80 transition-colors underline underline-offset-2 decoration-white/20"
-              >
-                企業管理者ログイン
+                システムログイン
               </a>
             </motion.div>
           </motion.div>
