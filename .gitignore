@@ -33,3 +33,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 営業資料（公開もコミットもしない）
+/docs/*.pdf

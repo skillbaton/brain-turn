@@ -60,14 +60,14 @@ export default function Hero() {
           >
             {/* Badges */}
             <motion.div variants={item} className="flex flex-wrap gap-2 mb-8">
+              <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-bold bg-amber-300 text-navy-900">
+                利用料金 0円
+              </span>
               <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold bg-white/20 text-white backdrop-blur-sm">
                 多言語対応
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold bg-white/20 text-white backdrop-blur-sm">
-                法人向けeラーニングシステム
-              </span>
               <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-medium text-white/70 border border-white/30">
-                助成金活用可能
+                受入企業・登録支援機関・監理団体等
               </span>
             </motion.div>
 
@@ -78,13 +78,10 @@ export default function Hero() {
               style={{ lineHeight: 1.08 }}
             >
               <span className="block text-[1.95rem] md:text-[2.2rem] xl:text-[2.55rem]">
-                外国人が
-              </span>
-              <span className="block text-[1.95rem] md:text-[2.2rem] xl:text-[2.55rem]">
-                働きやすい環境を
+                外国人材教育を、
               </span>
               <span className="block text-[2.3rem] md:text-[2.6rem] xl:text-[3rem] mt-1.5">
-                「<span className="font-extrabold text-white">整える</span>」
+                <span className="font-extrabold text-amber-300">無料</span>で仕組み化。
               </span>
             </motion.h1>
 
@@ -93,29 +90,29 @@ export default function Hero() {
               variants={item}
               className="mt-4 text-[13px] md:text-[14px] text-white/60 tracking-wide"
             >
-              「教育」ではなく、「<span className="text-white/90 font-medium">整える</span>」という発想。
+              学習・可視化・育成を一つにまとめた、外国人材向け<span className="text-white/90 font-medium">eラーニング</span>。
             </motion.p>
 
             {/* Sub copy */}
             <motion.div variants={item} className="mt-8 space-y-2 max-w-[460px]">
               <p className="text-[15px] md:text-base font-semibold text-white leading-relaxed">
-                SKILL TUNEは、外国人が定着できる職場環境を整えるシステムです。
+                現行機能を、SKILL TUNE 無料版としてご利用いただけます。
               </p>
               <p className="text-[15px] md:text-base text-white/70 leading-relaxed">
-                受講状況・理解度・未対応者を可視化。
+                5つの基礎コースを多言語で受講。
               </p>
               <p className="text-[15px] md:text-base text-white/70 leading-relaxed">
-                属人化しない運用で、定着率を高める。
+                受講状況・理解度・学習データを可視化し、次の育成へつなげる。
               </p>
               <p className="text-[13px] text-white/50 leading-relaxed pt-1">
-                外国人雇用に特化した法人向けeラーニングシステムです。
+                受入企業・登録支援機関・監理団体等にご利用いただけます。
               </p>
             </motion.div>
 
             {/* CTAs */}
             <motion.div variants={item} className="mt-9 flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="btn-primary !px-8 !py-4 !text-[15px]">
-                資料を請求する
+              <a href="#contact" className="btn-primary !px-8 !py-4 !text-[15px] !bg-amber-300 !text-navy-900 hover:!bg-amber-200">
+                無料版を申し込む
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
                   <path
                     d="M3 8h10M9 4l4 4-4 4"
@@ -126,8 +123,8 @@ export default function Hero() {
                   />
                 </svg>
               </a>
-              <a href="#solution" className="btn-secondary !px-8 !py-4 !text-[15px] !text-white !border-white/60 !bg-white/15 hover:!bg-white/25">
-                仕組みを見る
+              <a href="#freeplan" className="btn-secondary !px-8 !py-4 !text-[15px] !text-white !border-white/60 !bg-white/15 hover:!bg-white/25">
+                無料版でできること
               </a>
             </motion.div>
 

@@ -1,21 +1,23 @@
 const steps = [
   {
     num: "01",
-    title: "資料請求・ヒアリング",
-    desc: "フォームよりご連絡ください。1営業日以内にご連絡し、貴社の状況をヒアリングします。",
-    duration: "〜1週間",
+    title: "ご相談",
+    desc: "対象人数・利用目的を確認します。まずは情報収集だけでも問題ありません。",
   },
   {
     num: "02",
-    title: "導入設計・初期設定",
-    desc: "スタッフ構成・業務内容に合わせて初期設定を実施。コンテンツの配信設定まで伴走します。",
-    duration: "〜2週間",
+    title: "利用準備",
+    desc: "企業・管理者アカウントを準備します。複雑な設定作業は必要ありません。",
   },
   {
     num: "03",
-    title: "運用開始・定着支援",
-    desc: "ダッシュボードで即日運用スタート。定着まで担当サポーターがサポートします。",
-    duration: "運用開始",
+    title: "受講者登録",
+    desc: "対象者を登録し、受講方法をご案内します。多言語での受講にも対応します。",
+  },
+  {
+    num: "04",
+    title: "学習開始",
+    desc: "受講状況と学習データを確認できる状態になります。運用開始後もサポートします。",
   },
 ];
 
@@ -31,7 +33,7 @@ export default function Onboarding() {
             導入までの流れ
           </h2>
           <p className="mt-4 text-gray-500 text-base">
-            最短3週間で運用開始。複雑な設定は不要です。
+            ご相談から利用開始まで、4ステップでご案内します。
           </p>
         </div>
 
@@ -44,13 +46,12 @@ export default function Onboarding() {
             {steps.map((s, i) => (
               <div key={s.num} className="flex gap-6 items-start">
                 {/* Circle */}
-                <div className={`flex-shrink-0 relative z-10 w-20 h-20 rounded-full flex flex-col items-center justify-center border-2 shadow-sm ${
+                <div className={`flex-shrink-0 relative z-10 w-20 h-20 rounded-full flex items-center justify-center border-2 shadow-sm ${
                   i === steps.length - 1
                     ? "bg-navy-900 border-navy-900 text-white"
                     : "bg-white border-gray-200 text-navy-900"
                 }`}>
-                  <span className="text-[10px] font-semibold opacity-60">{s.num}</span>
-                  <span className="text-[10px] font-semibold mt-0.5">{s.duration}</span>
+                  <span className="text-xl font-bold font-mono">{s.num}</span>
                 </div>
 
                 {/* Content */}
@@ -63,10 +64,21 @@ export default function Onboarding() {
           </div>
         </div>
 
+        {/* Closing note */}
+        <div className="mt-10 max-w-3xl mx-auto rounded-xl px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-x-5 gap-y-2 text-center"
+          style={{ background: "rgba(15,27,76,0.05)" }}>
+          <p className="text-[15px] font-semibold text-navy-900">
+            最初の利用開始まで伴走します。
+          </p>
+          <p className="text-[13px] text-gray-500 sm:border-l sm:border-gray-300 sm:pl-5">
+            利用条件・開始時期は、導入時に個別にご案内します。
+          </p>
+        </div>
+
         {/* Trust chips */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           {[
-            "初期費用の目安は資料に記載",
+            "利用料金0円",
             "返信は1営業日以内",
             "導入まで専任サポート",
             "まずは情報収集だけでも歓迎",

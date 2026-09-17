@@ -6,8 +6,9 @@ import Image from "next/image";
 const navLinks = [
   { label: "課題",          href: "#problem"    },
   { label: "仕組み",        href: "#solution"   },
+  { label: "学べる内容",    href: "#courses"    },
+  { label: "無料版",        href: "#freeplan"   },
   { label: "導入の流れ",    href: "#onboarding" },
-  { label: "助成金",        href: "#grant"      },
   { label: "FAQ",          href: "#faq"        },
 ];
 
@@ -44,7 +45,7 @@ export default function Header() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((l) => (
               <a
                 key={l.href}
@@ -57,19 +58,19 @@ export default function Header() {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <div className="flex items-center text-[12px] text-gray-400">
               <a href="https://skill-tune.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-700 transition-colors px-2 py-2">システムログイン</a>
             </div>
             <a href="#contact" className="btn-primary !py-2.5 !px-5 !text-[13px]">
-              資料を請求する
+              無料版を申し込む
             </a>
           </div>
 
           {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+            className="lg:hidden p-2 text-gray-600 hover:text-gray-900"
             aria-label="メニュー"
           >
             {menuOpen ? (
@@ -87,7 +88,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-5 py-4 space-y-1">
+        <div className="lg:hidden bg-white border-t border-gray-100 px-5 py-4 space-y-1">
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -107,7 +108,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
               className="block btn-primary !justify-center text-center"
             >
-              資料を請求する
+              無料版を申し込む
             </a>
           </div>
         </div>

@@ -2,8 +2,8 @@
 const steps = [
   {
     num: "01",
-    title: "整理・配信",
-    desc: "既存の教材・動画を受講設計として整理し、スタッフへの配信と進捗を一元管理します。受講期限・順序も設定可能。",
+    title: "学ぶ",
+    desc: "5つの基礎コースを多言語で受講。母語で理解できるため、教える側の負担を増やさずに基準を揃えられます。",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
@@ -12,8 +12,8 @@ const steps = [
   },
   {
     num: "02",
-    title: "可視化",
-    desc: "受講率・理解度スコアをダッシュボードで把握。誰がどこまで理解しているかが一目でわかります。",
+    title: "見える",
+    desc: "受講状況・理解度・学習データをダッシュボードで可視化。誰がどこまで理解しているかが一目でわかります。",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 19V6l12-3v13M9 19c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm12-3c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
@@ -22,8 +22,8 @@ const steps = [
   },
   {
     num: "03",
-    title: "フォロー",
-    desc: "未受講・理解度の低いスタッフをリストアップ。担当者が優先度をつけてフォローできます。",
+    title: "育てる",
+    desc: "未受講者をフォローし、学習データから育成候補を選定。特定技能2号を目指す人材の見極めにも活用できます。",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
@@ -100,11 +100,12 @@ export default function Solution() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="section-label">Solution</span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-            教育を「再現可能」にする設計。
+            教えっぱなしをなくし、<br />
+            教育を管理できる状態へ。
           </h2>
           <p className="mt-4 text-gray-500 text-base leading-relaxed">
-            担当者が変わっても、同じ質で運用できる。<br />
-            それが「整える仕組み」の力です。
+            教育内容の標準化から状況把握、次の支援までを<br />
+            一つの流れにします。
           </p>
         </div>
 

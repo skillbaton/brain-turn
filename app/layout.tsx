@@ -9,21 +9,24 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const title = "外国人材教育を、無料で仕組み化。| SKILL TUNE 無料版";
+const description =
+  "学習・可視化・育成を一つにまとめた外国人材向けeラーニング。5つの基礎コースを多言語で受講でき、受講状況・理解度・学習データを可視化します。現行機能を利用料金0円の無料版として提供。受入企業・登録支援機関・監理団体等にご利用いただけます。";
+
 export const metadata: Metadata = {
-  title: "外国人雇用を、構造で管理する | 教育管理SaaS",
-  description:
-    "日本語能力の差・報連相の不足・文化理解のズレを、注意ではなく仕組みで解決。外国人スタッフの理解度を数値管理し、教育を再現可能にする法人向け教育管理SaaSです。",
+  title,
+  description,
   openGraph: {
-    title: "外国人雇用を、構造で管理する | 教育管理SaaS",
-    description:
-      "理解を数値で管理できる仕組みへ。外国人雇用に特化した教育管理SaaSで、属人化を排除し、再現性のある組織運営を実現します。",
+    title,
+    description,
     type: "website",
     locale: "ja_JP",
+    siteName: "SKILL TUNE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "外国人雇用を、構造で管理する | 教育管理SaaS",
-    description: "理解を数値で管理できる仕組みへ。法人向け教育管理SaaS。",
+    title,
+    description: "外国人材教育を、無料で仕組み化。利用料金0円のSKILL TUNE 無料版。",
   },
   robots: {
     index: true,

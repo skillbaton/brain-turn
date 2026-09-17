@@ -4,6 +4,8 @@ import { useState } from "react";
 
 interface FormState {
   company: string;
+  orgType: string;
+  headcount: string;
   name: string;
   email: string;
   phone: string;
@@ -12,8 +14,12 @@ interface FormState {
 }
 
 const initial: FormState = {
-  company: "", name: "", email: "", phone: "", note: "", consent: false,
+  company: "", orgType: "", headcount: "", name: "", email: "", phone: "", note: "", consent: false,
 };
+
+const orgTypes = ["受入企業", "登録支援機関", "監理団体等", "その他"];
+
+const headcounts = ["1〜9名", "10〜29名", "30〜99名", "100名以上", "未定"];
 
 export default function ContactForm() {
   const [form,       setForm]       = useState<FormState>(initial);
@@ -24,7 +30,8 @@ export default function ContactForm() {
 
   function validate() {
     const e: Partial<Record<keyof FormState, string>> = {};
-    if (!form.company.trim()) e.company = "会社名を入力してください。";
+    if (!form.company.trim()) e.company = "会社名・団体名を入力してください。";
+    if (!form.orgType)        e.orgType = "区分を選択してください。";
     if (!form.name.trim())    e.name    = "お名前を入力してください。";
     if (!form.email.trim())   e.email   = "メールアドレスを入力してください。";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
@@ -48,9 +55,9 @@ export default function ContactForm() {
       });
       const data = await res.json();
       if (data.success) { setSubmitted(true); setForm(initial); }
-      else setApiError(data.error ?? "送信に失敗しました。");
+      else setApiError(data.error ?? "送信に失敗しました。お手数ですが時間をおいて再度お試しください。");
     } catch {
-      setApiError("ネットワークエラーが発生しました。");
+      setApiError("送信に失敗しました。お手数ですが時間をおいて再度お試しください。");
     } finally {
       setSubmitting(false);
     }
@@ -74,22 +81,22 @@ export default function ContactForm() {
               Contact
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-bold leading-tight tracking-tight">
-              まずは資料を<br />ご確認ください。
+              まずは無料版を<br />ご利用ください。
             </h2>
             <p className="mt-5 text-blue-100 text-base leading-relaxed opacity-75">
-              導入規模や体制により、<br />
-              最適な運用モデルをご案内します。<br />
-              価格を並べる前に、<br />
-              貴社に合う形をご提示します。
+              無料版の導入をご希望の<br />
+              企業・支援機関を募集しています。<br />
+              対象人数と利用目的をうかがい、<br />
+              利用開始までご案内します。
             </p>
 
             {/* Trust chips */}
             <div className="mt-8 space-y-3">
               {[
+                "利用料金0円",
                 "返信は1営業日以内",
-                "費用の目安は資料にてご案内",
                 "情報収集だけでも歓迎",
-                "助成金活用のご案内も可能",
+                "受入企業・支援機関どちらも可",
               ].map((t) => (
                 <div key={t} className="flex items-center gap-2.5 text-[13px] text-blue-200 opacity-70">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -111,21 +118,21 @@ export default function ContactForm() {
                     <path d="M5 14.5L11 20.5L23 8" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">ご送信ありがとうございます</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">お申し込みを受け付けました。</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  1営業日以内にご連絡いたします。<br />
+                  1営業日以内にご連絡します。<br />
                   しばらくお待ちください。
                 </p>
               </div>
             ) : (
               /* Form */
               <form onSubmit={handleSubmit} noValidate className="p-7 md:p-9 space-y-4">
-                <h3 className="text-base font-bold text-gray-900 mb-5">資料請求フォーム</h3>
+                <h3 className="text-base font-bold text-gray-900 mb-5">無料版 お申し込みフォーム</h3>
 
                 {/* Company */}
                 <div>
                   <label className="block text-xs font-semibold text-gray-600 mb-1.5">
-                    会社名 <span className="text-red-400">*</span>
+                    会社名・団体名 <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="text"
@@ -135,6 +142,42 @@ export default function ContactForm() {
                     className={fieldCls("company")}
                   />
                   {errors.company && <p className="text-[11px] text-red-500 mt-1">{errors.company}</p>}
+                </div>
+
+                {/* Org type + headcount (2-col) */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1.5">
+                      区分 <span className="text-red-400">*</span>
+                    </label>
+                    <select
+                      value={form.orgType}
+                      onChange={(e) => setForm({ ...form, orgType: e.target.value })}
+                      className={`${fieldCls("orgType")} ${form.orgType ? "text-gray-900" : "text-gray-300"}`}
+                    >
+                      <option value="" disabled>選択してください</option>
+                      {orgTypes.map((t) => (
+                        <option key={t} value={t} className="text-gray-900">{t}</option>
+                      ))}
+                    </select>
+                    {errors.orgType && <p className="text-[11px] text-red-500 mt-1">{errors.orgType}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-600 mb-1.5">
+                      対象人数{" "}
+                      <span className="text-gray-400 font-normal">任意</span>
+                    </label>
+                    <select
+                      value={form.headcount}
+                      onChange={(e) => setForm({ ...form, headcount: e.target.value })}
+                      className={`${fieldCls("headcount")} ${form.headcount ? "text-gray-900" : "text-gray-300"}`}
+                    >
+                      <option value="" disabled>選択してください</option>
+                      {headcounts.map((h) => (
+                        <option key={h} value={h} className="text-gray-900">{h}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 {/* Name + Email (2-col) */}
@@ -191,7 +234,7 @@ export default function ContactForm() {
                   <textarea
                     value={form.note}
                     onChange={(e) => setForm({ ...form, note: e.target.value })}
-                    placeholder="外国人スタッフが10名ほどおり、現状の研修をどう整理できるか相談したいです。"
+                    placeholder="外国人スタッフが10名ほどおり、まず無料版で基礎教育を整えたいと考えています。"
                     rows={3}
                     className="w-full px-4 py-3 text-sm border border-gray-200 rounded-xl outline-none focus:border-navy-900 transition-colors resize-none placeholder:text-gray-300"
                   />
@@ -242,7 +285,7 @@ export default function ContactForm() {
                       </svg>
                       送信中...
                     </>
-                  ) : "資料を請求する"}
+                  ) : "無料版を申し込む"}
                 </button>
               </form>
             )}
