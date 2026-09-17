@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import DashboardMock from "@/components/DashboardMock";
+import Image from "next/image";
 
 const stagger = {
   hidden: {},
@@ -144,8 +144,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── Right: Dashboard Mock ── */}
-          <div className="relative w-full max-w-[540px] mx-auto lg:mx-0">
+          {/* ── Right: Dashboard Screenshot ── */}
+          <div className="relative w-full max-w-[600px] mx-auto lg:mx-0">
             <div
               aria-hidden
               className="absolute -inset-6 rounded-3xl blur-3xl opacity-[0.15]"
@@ -163,7 +163,15 @@ export default function Hero() {
                 animate={shouldReduce ? {} : { y: [0, -6, 0] }}
                 transition={{ duration: 9, ease: "easeInOut", repeat: Infinity }}
               >
-                <DashboardMock />
+                <Image
+                  src="/hero-image.png"
+                  alt="SKILL TUNE 管理画面：受講状況・理解度・学習データのダッシュボード"
+                  width={1670}
+                  height={942}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                  className="w-full h-auto rounded-2xl border border-white/15 shadow-2xl"
+                />
               </motion.div>
             </motion.div>
           </div>
